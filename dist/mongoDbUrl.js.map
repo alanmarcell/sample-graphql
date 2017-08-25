@@ -1,0 +1,1 @@
+{"version":3,"sources":["../dist-esnext/mongoDbUrl.js"],"names":[],"mappings":";;;;;kBAAe,0C;AACf","file":"mongoDbUrl.js","sourcesContent":["export default 'mongodb://localhost:27017/sample-graphql';\r\n//# sourceMappingURL=mongoDbUrl.js.map"]}

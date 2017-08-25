@@ -8,7 +8,7 @@
     "target": "esnext",
     "sourceMap": true,
     "listFiles": false,
-    "outDir": "output/dist-esnext/",
+    "outDir": "dist-esnext/",
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "lib": [
