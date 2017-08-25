@@ -1,0 +1,9 @@
+{
+  "generator-ptz-graphql": {
+    "promptValues": {
+      "appname": "sample-graphql",
+      "githubAuthor": "polutz",
+      "codecovToken": ""
+    }
+  }
+}

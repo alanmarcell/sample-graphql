@@ -1,0 +1,56 @@
+//Save User
+mutation($input: SaveUserInput!) {
+    saveUser(input: $input) {
+        userEdge {
+            node {
+                errors,
+                id,
+                userName,
+                email,
+                emailConfirmed,
+                displayName,
+                imgUrl
+            }
+        }
+    }
+}
+
+//Variables
+{
+    "input": {
+        "userName": "angeloocana",
+        "email": "angeloocana@gmail.com",
+        "displayName": "Ângelo Ocanã",
+        "password": "teste"
+    }
+}
+
+//--------------------------------------------------------------
+
+
+//Example
+CreateLinkMutation($input: CreateLinkInput!){
+    createLink(input: $input){
+        clientMutationId,
+        linkEdge{
+            node{
+                id,
+                title,
+                url
+            }
+        }
+    } 
+}
+//Variables
+{
+    "input": {
+        "clientMutationId": "42",
+        "title": "Teste",
+        "url": "linkTeste.com"
+    }
+}
+
+//-----------------------------------------------------------
+
+
+
