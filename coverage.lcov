@@ -1,5 +1,5 @@
 TN:
-SF:C:\Users\alan.m.oliveira\dev\sample-graphql\dist-esnext\index.js
+SF:C:\Users\alan.m.oliveira\dev\sample-graphql\output\dist-esnext\index.js
 FN:22,_callee$
 FN:25,(anonymous_3)
 FN:19,getRunningUrl
@@ -68,7 +68,7 @@ BRF:13
 BRH:10
 end_of_record
 TN:
-SF:C:\Users\alan.m.oliveira\dev\sample-graphql\dist-esnext\core\appSchema.js
+SF:C:\Users\alan.m.oliveira\dev\sample-graphql\output\dist-esnext\core\appSchema.js
 FN:2,AppSchema
 FN:5,fields
 FNF:2
@@ -87,7 +87,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\alan.m.oliveira\dev\sample-graphql\dist-esnext\core\schema.js
+SF:C:\Users\alan.m.oliveira\dev\sample-graphql\output\dist-esnext\core\schema.js
 FN:6,Schema
 FN:13,fields
 FN:15,resolve
@@ -132,7 +132,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\alan.m.oliveira\dev\sample-graphql\dist-esnext\menus\menuSchema.js
+SF:C:\Users\alan.m.oliveira\dev\sample-graphql\output\dist-esnext\menus\menuSchema.js
 FN:2,MenuSchema
 FN:5,fields
 FN:14,fields
@@ -155,7 +155,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\alan.m.oliveira\dev\sample-graphql\dist-esnext\users\userSchema.js
+SF:C:\Users\alan.m.oliveira\dev\sample-graphql\output\dist-esnext\users\userSchema.js
 FN:3,UserSchema
 FN:6,fields
 FN:22,getUserConnection

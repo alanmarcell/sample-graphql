@@ -1,7 +1,6 @@
 # sample-graphql
 
 [![Build Status](https://travis-ci.org/alanmarcell/sample-graphql.svg)](https://travis-ci.org/alanmarcell/sample-graphql)
-[![NPM](https://img.shields.io/npm/v/sample-graphql.svg)](https://www.npmjs.com/package/sample-graphql)
 [![codecov.io](http://codecov.io/github/alanmarcell/sample-graphql/coverage.svg)](http://codecov.io/github/alanmarcell/sample-graphql)
 [![Dependency Status](https://gemnasium.com/alanmarcell/sample-graphql.svg)](https://gemnasium.com/alanmarcell/sample-graphql)
 [![bitHound Score](https://www.bithound.io/github/gotwarlost/istanbul/badges/score.svg)](https://www.bithound.io/github/alanmarcell/sample-graphql)
