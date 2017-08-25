@@ -12,6 +12,7 @@
     "test": "nyc npm run mocha && nyc report --reporter=html --reporter=text-lcov > coverage.lcov && codecov --token=f5186102-ac15-4a2f-9212-bf219e981ada",
     "test:cover": "npm run test & opn ./output/coverage/index.html",
     "predebug": "npm run pretest",
+    "postinstall": "npm run js",
     "debug": "node --nolazy --debug-brk=5858 ./output/dist/index.js",
     "docs:build": "typedoc --out ./docs ./ --includeDeclarations --excludeExternals --exclude '**/*.test.ts'",
     "docs": "npm run docs:build && opn ./output/docs/index.html",
