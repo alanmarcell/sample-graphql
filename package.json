@@ -54,6 +54,7 @@
     "@alanmarcell/ptz-user-domain": "^2.0.3",
     "@alanmarcell/ptz-user-repository": "^0.0.3",
     "@types/mongodb": "^2.2.10",
+    "axios": "^0.16.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.3",
     "dotenv": "^4.0.0",

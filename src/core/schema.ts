@@ -1,6 +1,7 @@
 import { IUserApp } from '@alanmarcell/ptz-user-domain';
 
 import MenuSchema, { menu } from '../menus/menuSchema';
+import ProdsSchema from '../prods/prodsSchema';
 import UserSchema from '../users/userSchema';
 import AppSchema, { app } from './appSchema';
 
@@ -20,6 +21,7 @@ function Schema(userApp: IUserApp, authedUser, log: ILog) {
     const appSchema = AppSchema({ log });
     const menuSchema = MenuSchema({ log });
     const userSchema = UserSchema({ userApp, authedUser, log });
+    const prodsSchema = ProdsSchema(log);
 
     const viewer = {};
 
@@ -29,7 +31,8 @@ function Schema(userApp: IUserApp, authedUser, log: ILog) {
             id: globalIdField('Viewer'),
             app: { type: appSchema.appType, resolve: () => app },
             menu: { type: menuSchema.menuType, resolve: () => menu },
-            userConnection: userSchema.getUserConnection()
+            userConnection: userSchema.getUserConnection(),
+            prods: prodsSchema.getProds()
         })
     });
 
@@ -53,7 +56,8 @@ function Schema(userApp: IUserApp, authedUser, log: ILog) {
             name: 'Mutation',
             fields: () => ({
                 saveUser: userSchema.getSaveUserMutation(outputViewer),
-                getAuthToken: userSchema.getAuthTokenMutation(outputViewer)
+                getAuthToken: userSchema.getAuthTokenMutation(outputViewer),
+                saveProd: prodsSchema.getSaveProdMutation(),
             })
         })
     });

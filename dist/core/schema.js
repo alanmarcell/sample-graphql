@@ -8,6 +8,10 @@ var _menuSchema = require('../menus/menuSchema');
 
 var _menuSchema2 = _interopRequireDefault(_menuSchema);
 
+var _prodsSchema = require('../prods/prodsSchema');
+
+var _prodsSchema2 = _interopRequireDefault(_prodsSchema);
+
 var _userSchema = require('../users/userSchema');
 
 var _userSchema2 = _interopRequireDefault(_userSchema);
@@ -26,6 +30,7 @@ function Schema(userApp, authedUser, log) {
     var appSchema = (0, _appSchema2.default)({ log: log });
     var menuSchema = (0, _menuSchema2.default)({ log: log });
     var userSchema = (0, _userSchema2.default)({ userApp: userApp, authedUser: authedUser, log: log });
+    var prodsSchema = (0, _prodsSchema2.default)(log);
     var viewer = {};
     var viewerType = new _graphql.GraphQLObjectType({
         name: 'Viewer',
@@ -38,7 +43,8 @@ function Schema(userApp, authedUser, log) {
                 menu: { type: menuSchema.menuType, resolve: function resolve() {
                         return _menuSchema.menu;
                     } },
-                userConnection: userSchema.getUserConnection()
+                userConnection: userSchema.getUserConnection(),
+                prods: prodsSchema.getProds()
             };
         }
     });
@@ -67,7 +73,8 @@ function Schema(userApp, authedUser, log) {
             fields: function fields() {
                 return {
                     saveUser: userSchema.getSaveUserMutation(outputViewer),
-                    getAuthToken: userSchema.getAuthTokenMutation(outputViewer)
+                    getAuthToken: userSchema.getAuthTokenMutation(outputViewer),
+                    saveProd: prodsSchema.getSaveProdMutation()
                 };
             }
         })

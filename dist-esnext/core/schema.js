@@ -1,4 +1,5 @@
 import MenuSchema, { menu } from '../menus/menuSchema';
+import ProdsSchema from '../prods/prodsSchema';
 import UserSchema from '../users/userSchema';
 import AppSchema, { app } from './appSchema';
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
@@ -7,6 +8,7 @@ function Schema(userApp, authedUser, log) {
     const appSchema = AppSchema({ log });
     const menuSchema = MenuSchema({ log });
     const userSchema = UserSchema({ userApp, authedUser, log });
+    const prodsSchema = ProdsSchema(log);
     const viewer = {};
     const viewerType = new GraphQLObjectType({
         name: 'Viewer',
@@ -14,7 +16,8 @@ function Schema(userApp, authedUser, log) {
             id: globalIdField('Viewer'),
             app: { type: appSchema.appType, resolve: () => app },
             menu: { type: menuSchema.menuType, resolve: () => menu },
-            userConnection: userSchema.getUserConnection()
+            userConnection: userSchema.getUserConnection(),
+            prods: prodsSchema.getProds()
         })
     });
     const outputViewer = {
@@ -35,7 +38,8 @@ function Schema(userApp, authedUser, log) {
             name: 'Mutation',
             fields: () => ({
                 saveUser: userSchema.getSaveUserMutation(outputViewer),
-                getAuthToken: userSchema.getAuthTokenMutation(outputViewer)
+                getAuthToken: userSchema.getAuthTokenMutation(outputViewer),
+                saveProd: prodsSchema.getSaveProdMutation(),
             })
         })
     });

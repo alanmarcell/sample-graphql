@@ -17,7 +17,7 @@ import { createApp } from '@alanmarcell/ptz-user-app';
 import { createUserRepository } from '@alanmarcell/ptz-user-repository';
 
 import logFile from 'ptz-log-file';
-const log = logFile({ dir: './logs' });
+export const log = logFile({ dir: './logs' });
 
 const app = express();
 app.use(cors());
