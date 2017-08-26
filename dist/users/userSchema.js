@@ -10,7 +10,7 @@ var _graphqlRelay = require('graphql-relay');
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var expiresIn = 1000000; // seconds
+var expiresIn = 10; // seconds
 function UserSchema(_ref) {
     var userApp = _ref.userApp,
         authedUser = _ref.authedUser,
@@ -152,6 +152,12 @@ function UserSchema(_ref) {
                     type: _graphql.GraphQLBoolean,
                     resolve: function resolve(authToken) {
                         return authToken.authToken ? true : false;
+                    }
+                },
+                message: {
+                    type: _graphql.GraphQLString,
+                    resolve: function resolve(authToken) {
+                        return authToken.authToken ? '' : 'Auth Failed, review your credentials';
                     }
                 },
                 errors: {

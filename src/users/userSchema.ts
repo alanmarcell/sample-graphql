@@ -145,6 +145,12 @@ function UserSchema({ userApp, authedUser, log }: IUserSchemaArgs) {
                     type: GraphQLBoolean,
                     resolve: (authToken: IAuthToken) => authToken.authToken ? true : false,
                 },
+                message: {
+                    type: GraphQLString,
+                    resolve: (authToken: IAuthToken) => authToken.authToken
+                        ? ''
+                        : 'Auth Failed, review your credentials',
+                },
                 errors: {
                     type: new GraphQLList(GraphQLString),
                     resolve: (authToken: IAuthToken) => authToken.errors
