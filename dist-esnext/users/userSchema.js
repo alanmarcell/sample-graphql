@@ -1,5 +1,6 @@
-import { GraphQLBoolean, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLBoolean, GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql';
 import { connectionArgs, connectionDefinitions, connectionFromPromisedArray, mutationWithClientMutationId } from 'graphql-relay';
+const expiresIn = 1000000; // seconds
 function UserSchema({ userApp, authedUser, log }) {
     const userType = new GraphQLObjectType({
         name: 'User',
@@ -91,6 +92,14 @@ function UserSchema({ userApp, authedUser, log }) {
                 authToken: {
                     type: GraphQLString,
                     resolve: (authToken) => authToken.authToken
+                },
+                expiresIn: {
+                    type: GraphQLInt,
+                    resolve: () => expiresIn,
+                },
+                success: {
+                    type: GraphQLBoolean,
+                    resolve: (authToken) => authToken.authToken ? true : false,
                 },
                 errors: {
                     type: new GraphQLList(GraphQLString),

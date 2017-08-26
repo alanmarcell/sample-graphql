@@ -2,6 +2,7 @@ import { IAuthToken, IAuthUserArgs, ICreatedBy, IUserApp } from '@alanmarcell/pt
 
 import {
     GraphQLBoolean,
+    GraphQLInt,
     GraphQLList,
     GraphQLNonNull,
     GraphQLObjectType,
@@ -22,6 +23,8 @@ interface IUserSchemaArgs {
     authedUser: ICreatedBy;
     log: ILog;
 }
+
+const expiresIn = 1000000; // seconds
 
 interface IGraphqlContext {
     createdBy?: ICreatedBy;
@@ -133,6 +136,14 @@ function UserSchema({ userApp, authedUser, log }: IUserSchemaArgs) {
                 authToken: {
                     type: GraphQLString,
                     resolve: (authToken: IAuthToken) => authToken.authToken
+                },
+                expiresIn: {
+                    type: GraphQLInt,
+                    resolve: () => expiresIn,
+                },
+                success: {
+                    type: GraphQLBoolean,
+                    resolve: (authToken: IAuthToken) => authToken.authToken ? true : false,
                 },
                 errors: {
                     type: new GraphQLList(GraphQLString),
