@@ -10,7 +10,7 @@ var _graphqlRelay = require('graphql-relay');
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var expiresIn = 10; // seconds
+var expiresIn = 1000000; // seconds
 function UserSchema(_ref) {
     var userApp = _ref.userApp,
         authedUser = _ref.authedUser,
@@ -28,7 +28,16 @@ function UserSchema(_ref) {
                 imgUrl: { type: _graphql.GraphQLString },
                 // createdBy,
                 // dtChanged,
-                errors: { type: new _graphql.GraphQLList(_graphql.GraphQLString) }
+                errors: { type: new _graphql.GraphQLList(errorType) }
+            };
+        }
+    });
+    var errorType = new _graphql.GraphQLObjectType({
+        name: 'Errors',
+        fields: function fields() {
+            return {
+                propName: { type: _graphql.GraphQLString },
+                errorMsg: { type: _graphql.GraphQLString }
             };
         }
     });
@@ -161,8 +170,9 @@ function UserSchema(_ref) {
                     }
                 },
                 errors: {
-                    type: new _graphql.GraphQLList(_graphql.GraphQLString),
+                    type: new _graphql.GraphQLList(errorType),
                     resolve: function resolve(authToken) {
+                        console.log(authToken.errors);
                         return authToken.errors;
                     }
                 },

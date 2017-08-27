@@ -43,7 +43,15 @@ function UserSchema({ userApp, authedUser, log }: IUserSchemaArgs) {
             imgUrl: { type: GraphQLString },
             // createdBy,
             // dtChanged,
-            errors: { type: new GraphQLList(GraphQLString) }
+            errors: { type: new GraphQLList(errorType) }
+        })
+    });
+
+    const errorType = new GraphQLObjectType({
+        name: 'Errors',
+        fields: () => ({
+            propName: { type: GraphQLString },
+            errorMsg: { type: GraphQLString },
         })
     });
 
@@ -152,8 +160,11 @@ function UserSchema({ userApp, authedUser, log }: IUserSchemaArgs) {
                         : 'Auth Failed, review your credentials',
                 },
                 errors: {
-                    type: new GraphQLList(GraphQLString),
-                    resolve: (authToken: IAuthToken) => authToken.errors
+                    type: new GraphQLList(errorType),
+                    resolve: (authToken: IAuthToken) => {
+                        console.log(authToken.errors);
+                        return authToken.errors;
+                    }
                 },
                 viewer: outputViewer
             },
