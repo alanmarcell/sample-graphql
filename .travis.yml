@@ -1,3 +1,16 @@
+sudo: required
+
 language: node_js
+
 node_js:
   - "node"
+
+services:
+  - docker
+
+before_install:
+- docker build -t pur .
+- docker run -d --name cpur pur
+
+script:
+- docker exec cpur npm test
