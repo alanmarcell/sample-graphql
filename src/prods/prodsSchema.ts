@@ -1,6 +1,6 @@
-import axios from 'axios';
+import { ICreatedBy } from '@alanmarcell/ptz-user-domain';
 import {
-    GraphQLInt,
+    GraphQLFloat,
     GraphQLList,
     GraphQLNonNull,
     GraphQLObjectType,
@@ -13,60 +13,22 @@ import {
     mutationWithClientMutationId
 } from 'graphql-relay';
 import { ILog } from 'ptz-log';
-import R from 'ramda';
+import { IProductApp } from './domain';
 
-async function _getProds(log: ILog) {
-    const res = [];
-    await axios({
-        method: 'get',
-        url: 'http://localhost:3010/api/products'
-    }).then((response) => {
-        res.push(response.data);
-    });
-
-    // await axios({
-    //     method: 'get',
-    //     url: 'http://localhost:3030/api/products'
-    // }).then((response) => {
-    //     res.push(response.data);
-    // });
-
-    return (R.flatten(res));
+interface IProductSchemaArgs {
+    productApp: IProductApp;
+    authedUser: ICreatedBy;
+    log: ILog;
 }
 
-async function save({ prodArgs, createdBy, log }) {
-    const res = [];
-    log(prodArgs);
-    await axios({
-        method: 'post',
-        url: 'http://localhost:3010/api/product',
-        data: prodArgs
-    }).then((response) => {
-        log('prodArgs', prodArgs);
-        res.push(response.data);
-    });
-
-    // await axios({
-    //     method: 'get',
-    //     url: 'http://localhost:3030/api/products'
-    // }).then((response) => {
-    //     res.push(response.data);
-    // });
-    return (R.flatten(res));
-}
-
-const prodApp = {
-    save
-};
-
-function ProdsSchema(log: ILog) {
+function ProdsSchema({ productApp, authedUser, log }: IProductSchemaArgs) {
 
     const prodsType = new GraphQLObjectType({
         name: 'Prods',
         fields: () => ({
             _id: { type: GraphQLString },
             name: { type: GraphQLString },
-            price: { type: GraphQLInt },
+            price: { type: GraphQLFloat },
             category: { type: GraphQLString }
         })
     });
@@ -83,7 +45,11 @@ function ProdsSchema(log: ILog) {
             resolve: (_, args, ctx) => {
                 log('getting prods');
                 return connectionFromPromisedArray(
-                    _getProds(log),
+                    productApp.findProducts({
+                        query: {},
+                        options: { limit: args.first },
+                        authedUser: ctx.createdBy
+                    }),
                     args
                 );
             }
@@ -114,18 +80,18 @@ function ProdsSchema(log: ILog) {
                 }
             },
 
-            mutateAndGetPayload: async (prodArgs, param2, param3) => {
+            mutateAndGetPayload: async (productArgs, param2, param3) => {
                 try {
-                    log('saving prod:', prodArgs);
+                    log('saving prod:', productArgs);
                     log('saving param2:', param2);
                     log('saving param3:', param3);
-                    const savedProd = await prodApp.save({
-                        prodArgs,
-                        createdBy: null, // TODO: FIX IT! SEND createdBy from context
-                        log
+
+                    const savedProduct = await productApp.saveProduct({
+                        productArgs,
+                        authedUser: null
                     });
-                    log('saved prod:', savedProd);
-                    return savedProd;
+                    log('saved product:', savedProduct);
+                    return savedProduct;
                 } catch (e) {
                     log('Error saving prod:', e);
                 }

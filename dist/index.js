@@ -74,6 +74,10 @@ var _ptzUserApp = require('@alanmarcell/ptz-user-app');
 
 var _ptzUserRepository = require('@alanmarcell/ptz-user-repository');
 
+var _app = require('./prods/app');
+
+var _repository = require('./prods/repository');
+
 var _ptzLogFile = require('ptz-log-file');
 
 var _ptzLogFile2 = _interopRequireDefault(_ptzLogFile);
@@ -95,7 +99,7 @@ function getRunningUrl(path) {
 }
 
 _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var userApp, authedUser, schema, graphqlFolder;
+    var userApp, productApp, authedUser, schema, graphqlFolder;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
             switch (_context2.prev = _context2.next) {
@@ -113,44 +117,56 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                         log: _context2.t2
                     };
                     userApp = (0, _context2.t0)(_context2.t3);
+                    _context2.t4 = _app.createApp;
+                    _context2.next = 11;
+                    return (0, _repository.createProductRepository)(_mongoDbUrl2.default, 'products');
+
+                case 11:
+                    _context2.t5 = _context2.sent;
+                    _context2.t6 = log;
+                    _context2.t7 = {
+                        productRepository: _context2.t5,
+                        log: _context2.t6
+                    };
+                    productApp = (0, _context2.t4)(_context2.t7);
                     authedUser = {
                         dtCreated: new Date(),
                         ip: '0.0.0.0'
                     };
-                    _context2.next = 11;
+                    _context2.next = 18;
                     return userApp.seed(authedUser);
 
-                case 11:
-                    schema = (0, _schema2.default)(userApp, authedUser, log);
+                case 18:
+                    schema = (0, _schema2.default)(userApp, productApp, authedUser, log);
                     graphqlFolder = '/graphql';
 
                     app.use(graphqlFolder, (0, _expressGraphql2.default)({
                         schema: schema,
                         graphiql: true
                     }));
-                    _context2.next = 16;
+                    _context2.next = 23;
                     return createGraphqlSchema(schema);
 
-                case 16:
+                case 23:
                     app.listen(PORT, function () {
                         var url = getRunningUrl(graphqlFolder);
                         log('Running on ' + url);
                     });
-                    _context2.next = 22;
+                    _context2.next = 29;
                     break;
 
-                case 19:
-                    _context2.prev = 19;
-                    _context2.t4 = _context2['catch'](0);
+                case 26:
+                    _context2.prev = 26;
+                    _context2.t8 = _context2['catch'](0);
 
-                    log(_context2.t4);
+                    log(_context2.t8);
 
-                case 22:
+                case 29:
                 case 'end':
                     return _context2.stop();
             }
         }
-    }, _callee2, undefined, [[0, 19]]);
+    }, _callee2, undefined, [[0, 26]]);
 }))();
 //# sourceMappingURL=index.js.map
 //# sourceMappingURL=index.js.map

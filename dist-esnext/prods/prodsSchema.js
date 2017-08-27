@@ -1,52 +1,12 @@
-import axios from 'axios';
-import { GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLFloat, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql';
 import { connectionArgs, connectionDefinitions, connectionFromPromisedArray, mutationWithClientMutationId } from 'graphql-relay';
-import R from 'ramda';
-async function _getProds(log) {
-    const res = [];
-    await axios({
-        method: 'get',
-        url: 'http://localhost:3010/api/products'
-    }).then((response) => {
-        res.push(response.data);
-    });
-    // await axios({
-    //     method: 'get',
-    //     url: 'http://localhost:3030/api/products'
-    // }).then((response) => {
-    //     res.push(response.data);
-    // });
-    return (R.flatten(res));
-}
-async function save({ prodArgs, createdBy, log }) {
-    const res = [];
-    log(prodArgs);
-    await axios({
-        method: 'post',
-        url: 'http://localhost:3010/api/product',
-        data: prodArgs
-    }).then((response) => {
-        log('prodArgs', prodArgs);
-        res.push(response.data);
-    });
-    // await axios({
-    //     method: 'get',
-    //     url: 'http://localhost:3030/api/products'
-    // }).then((response) => {
-    //     res.push(response.data);
-    // });
-    return (R.flatten(res));
-}
-const prodApp = {
-    save
-};
-function ProdsSchema(log) {
+function ProdsSchema({ productApp, authedUser, log }) {
     const prodsType = new GraphQLObjectType({
         name: 'Prods',
         fields: () => ({
             _id: { type: GraphQLString },
             name: { type: GraphQLString },
-            price: { type: GraphQLInt },
+            price: { type: GraphQLFloat },
             category: { type: GraphQLString }
         })
     });
@@ -60,7 +20,11 @@ function ProdsSchema(log) {
             args: connectionArgs,
             resolve: (_, args, ctx) => {
                 log('getting prods');
-                return connectionFromPromisedArray(_getProds(log), args);
+                return connectionFromPromisedArray(productApp.findProducts({
+                    query: {},
+                    options: { limit: args.first },
+                    authedUser: ctx.createdBy
+                }), args);
             }
         };
     }
@@ -84,18 +48,17 @@ function ProdsSchema(log) {
                     }
                 }
             },
-            mutateAndGetPayload: async (prodArgs, param2, param3) => {
+            mutateAndGetPayload: async (productArgs, param2, param3) => {
                 try {
-                    log('saving prod:', prodArgs);
+                    log('saving prod:', productArgs);
                     log('saving param2:', param2);
                     log('saving param3:', param3);
-                    const savedProd = await prodApp.save({
-                        prodArgs,
-                        createdBy: null,
-                        log
+                    const savedProduct = await productApp.saveProduct({
+                        productArgs,
+                        authedUser: null
                     });
-                    log('saved prod:', savedProd);
-                    return savedProd;
+                    log('saved product:', savedProduct);
+                    return savedProduct;
                 }
                 catch (e) {
                     log('Error saving prod:', e);

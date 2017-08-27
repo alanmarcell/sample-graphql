@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _menuSchema = require('../menus/menuSchema');
+var _graphql = require('graphql');
 
-var _menuSchema2 = _interopRequireDefault(_menuSchema);
+var _graphqlRelay = require('graphql-relay');
 
 var _prodsSchema = require('../prods/prodsSchema');
 
@@ -16,33 +16,17 @@ var _userSchema = require('../users/userSchema');
 
 var _userSchema2 = _interopRequireDefault(_userSchema);
 
-var _appSchema = require('./appSchema');
-
-var _appSchema2 = _interopRequireDefault(_appSchema);
-
-var _graphql = require('graphql');
-
-var _graphqlRelay = require('graphql-relay');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Schema(userApp, authedUser, log) {
-    var appSchema = (0, _appSchema2.default)({ log: log });
-    var menuSchema = (0, _menuSchema2.default)({ log: log });
+function Schema(userApp, productApp, authedUser, log) {
     var userSchema = (0, _userSchema2.default)({ userApp: userApp, authedUser: authedUser, log: log });
-    var prodsSchema = (0, _prodsSchema2.default)(log);
+    var prodsSchema = (0, _prodsSchema2.default)({ productApp: productApp, authedUser: authedUser, log: log });
     var viewer = {};
     var viewerType = new _graphql.GraphQLObjectType({
         name: 'Viewer',
         fields: function fields() {
             return {
                 id: (0, _graphqlRelay.globalIdField)('Viewer'),
-                app: { type: appSchema.appType, resolve: function resolve() {
-                        return _appSchema.app;
-                    } },
-                menu: { type: menuSchema.menuType, resolve: function resolve() {
-                        return _menuSchema.menu;
-                    } },
                 userConnection: userSchema.getUserConnection(),
                 prods: prodsSchema.getProds()
             };

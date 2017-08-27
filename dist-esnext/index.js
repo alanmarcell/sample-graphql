@@ -8,8 +8,10 @@ import { graphql } from 'graphql';
 import { introspectionQuery } from 'graphql/utilities';
 import Schema from './core/schema';
 import MONGO_URL from './mongoDbUrl';
-import { createApp } from '@alanmarcell/ptz-user-app';
+import { createApp as createUserApp } from '@alanmarcell/ptz-user-app';
 import { createUserRepository } from '@alanmarcell/ptz-user-repository';
+import { createApp as createProductApp } from './prods/app';
+import { createProductRepository } from './prods/repository';
 import logFile from 'ptz-log-file';
 export const log = logFile({ dir: './logs' });
 const app = express();
@@ -31,8 +33,12 @@ async function createGraphqlSchema(schema) {
 }
 (async () => {
     try {
-        const userApp = createApp({
+        const userApp = createUserApp({
             userRepository: await createUserRepository(MONGO_URL, 'user'),
+            log
+        });
+        const productApp = createProductApp({
+            productRepository: await createProductRepository(MONGO_URL, 'products'),
             log
         });
         const authedUser = {
@@ -40,7 +46,7 @@ async function createGraphqlSchema(schema) {
             ip: '0.0.0.0'
         };
         await userApp.seed(authedUser);
-        const schema = Schema(userApp, authedUser, log);
+        const schema = Schema(userApp, productApp, authedUser, log);
         const graphqlFolder = '/graphql';
         app.use(graphqlFolder, GraphQlHttp({
             schema,

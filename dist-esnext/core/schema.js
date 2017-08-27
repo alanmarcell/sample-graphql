@@ -1,21 +1,15 @@
-import MenuSchema, { menu } from '../menus/menuSchema';
-import ProdsSchema from '../prods/prodsSchema';
-import UserSchema from '../users/userSchema';
-import AppSchema, { app } from './appSchema';
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 import { globalIdField } from 'graphql-relay';
-function Schema(userApp, authedUser, log) {
-    const appSchema = AppSchema({ log });
-    const menuSchema = MenuSchema({ log });
+import ProdsSchema from '../prods/prodsSchema';
+import UserSchema from '../users/userSchema';
+function Schema(userApp, productApp, authedUser, log) {
     const userSchema = UserSchema({ userApp, authedUser, log });
-    const prodsSchema = ProdsSchema(log);
+    const prodsSchema = ProdsSchema({ productApp, authedUser, log });
     const viewer = {};
     const viewerType = new GraphQLObjectType({
         name: 'Viewer',
         fields: () => ({
             id: globalIdField('Viewer'),
-            app: { type: appSchema.appType, resolve: () => app },
-            menu: { type: menuSchema.menuType, resolve: () => menu },
             userConnection: userSchema.getUserConnection(),
             prods: prodsSchema.getProds()
         })

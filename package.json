@@ -64,7 +64,6 @@
     "graphql-relay": "^0.5.2",
     "mongodb": "^2.2.31",
     "ptz-log": "^1.1.0",
-    "ptz-log-file": "^1.0.5",
-    "ptz-menu-domain": "^1.0.0"
+    "ptz-log-file": "^1.0.5"
   }
 }

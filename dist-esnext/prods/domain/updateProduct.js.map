@@ -1,0 +1,1 @@
+{"version":3,"file":"updateProduct.js","sourceRoot":"","sources":["../../../src/prods/domain/updateProduct.ts"],"names":[],"mappings":"AAEA;;;;GAIG;AACH,MAAM,CAAC,MAAM,aAAa,GAAG,CAAC,UAAoB,EAAE,EAAE,IAAI,EACtD,QAAQ,EACR,KAAK,EACM;IACX,MAAM,CAAC,MAAM,CAAC,MAAM,CAAC,EAAE,EAAE,UAAU,EAAE;QACjC,IAAI;QACJ,QAAQ;QACR,KAAK;QACL,SAAS,EAAE,IAAI,IAAI,EAAE;KACxB,CAAC,CAAC;AACP,CAAC,CAAC"}
