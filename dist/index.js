@@ -70,9 +70,9 @@ var _mongoDbUrl = require('./mongoDbUrl');
 
 var _mongoDbUrl2 = _interopRequireDefault(_mongoDbUrl);
 
-var _ptzUserApp = require('@alanmarcell/ptz-user-app');
+var _ptzUserApp = require('ptz-user-app');
 
-var _ptzUserRepository = require('@alanmarcell/ptz-user-repository');
+var _ptzUserRepository = require('ptz-user-repository');
 
 var _app = require('./prods/app');
 

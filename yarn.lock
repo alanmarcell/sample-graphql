@@ -2,75 +2,6 @@
 # yarn lockfile v1
 
 
-"@alanmarcell/ptz-core-app@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-core-app/-/ptz-core-app-2.0.2.tgz#d774a3fab73900655493f1dbfb2b0f19c34bea90"
-  dependencies:
-    "@alanmarcell/ptz-core-domain" "^2.0.4"
-    "@types/mocha" "^2.2.41"
-    "@types/node" "^8.0.13"
-    ptz-log "^1.1.0"
-
-"@alanmarcell/ptz-core-domain@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-core-domain/-/ptz-core-domain-2.0.4.tgz#70bb510ed40b4955a26eb84a851a4bf1046b1fe8"
-  dependencies:
-    "@types/mocha" "^2.2.41"
-    "@types/mongodb" "^2.2.7"
-    "@types/node" "^8.0.13"
-    "@types/shortid" "^0.0.29"
-    ptz-fp "^1.1.0"
-    ptz-log "^1.1.0"
-    ptz-validations "3.0.1"
-    ramda "^0.24.1"
-    shortid "^2.2.8"
-
-"@alanmarcell/ptz-core-repository@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-core-repository/-/ptz-core-repository-0.0.5.tgz#54e64f5a6ac276eb02546ac4bf91b365eb9aaefe"
-  dependencies:
-    "@alanmarcell/ptz-core-domain" "^2.0.4"
-    "@types/mocha" "^2.2.41"
-    "@types/mongodb" "^2.2.7"
-    "@types/node" "^8.0.13"
-    mongodb "^2.2.30"
-    ptz-log "^1.1.0"
-
-"@alanmarcell/ptz-user-app@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-user-app/-/ptz-user-app-2.0.4.tgz#94d8312948703de0deb77e43443c538b3a019a06"
-  dependencies:
-    "@alanmarcell/ptz-core-app" "^2.0.2"
-    "@alanmarcell/ptz-user-domain" "^2.0.3"
-    "@types/mocha" "^2.2.41"
-    "@types/node" "^8.0.13"
-    bcryptjs "^2.4.3"
-    dotenv "^4.0.0"
-    jwt-simple "^0.5.1"
-    ptz-log "^1.1.0"
-    ptz-validations "^3.0.1"
-
-"@alanmarcell/ptz-user-domain@^2.0.2", "@alanmarcell/ptz-user-domain@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-user-domain/-/ptz-user-domain-2.0.3.tgz#382e011300aaf93decd4eed5e094db45d031a9ca"
-  dependencies:
-    "@alanmarcell/ptz-core-domain" "^2.0.4"
-    "@types/mocha" "^2.2.41"
-    "@types/node" "^8.0.13"
-    ptz-log "^1.1.0"
-    ptz-validations "^3.0.1"
-
-"@alanmarcell/ptz-user-repository@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-user-repository/-/ptz-user-repository-0.0.3.tgz#f22952a28352d14998ea891d6cb3a4c099da9a81"
-  dependencies:
-    "@alanmarcell/ptz-core-repository" "^0.0.5"
-    "@alanmarcell/ptz-user-domain" "^2.0.2"
-    "@types/mocha" "^2.2.41"
-    "@types/node" "^8.0.13"
-    mongodb "^2.2.30"
-    ptz-log "^1.1.0"
-
 "@types/bson@*":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@types/bson/-/bson-1.0.4.tgz#94260b6b96fa459346959c9216799d8919e95d2b"
@@ -118,18 +49,18 @@
   version "0.3.29"
   resolved "https://registry.yarnpkg.com/@types/mkdirp/-/mkdirp-0.3.29.tgz#7f2ad7ec55f914482fc9b1ec4bb1ae6028d46066"
 
-"@types/mocha@^2.2.40", "@types/mocha@^2.2.41":
+"@types/mocha@^2.2.40":
   version "2.2.42"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.42.tgz#ab769f51d37646b6fe8d4a086a98c285b1fab3f5"
 
-"@types/mongodb@^2.2.10", "@types/mongodb@^2.2.7":
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-2.2.10.tgz#b8a9c009f498b2ee815dedf7f6efa616c2d997c4"
+"@types/mongodb@^2.2.10":
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-2.2.11.tgz#595cd869afa1c4cf6ee8935eb25a0783ab46e6aa"
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^8.0.13", "@types/node@^8.0.25":
+"@types/node@*", "@types/node@^8.0.25":
   version "8.0.25"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.25.tgz#66ecaf4df93f5281b48427ee96fbcdfc4f0cdce1"
 
@@ -144,7 +75,7 @@
     "@types/glob" "*"
     "@types/node" "*"
 
-"@types/shortid@^0.0.29":
+"@types/shortid@0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/shortid/-/shortid-0.0.29.tgz#8093ee0416a6e2bf2aa6338109114b3fbffa0e9b"
 
@@ -194,7 +125,7 @@ ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
-ansi-styles@^3.1.0:
+ansi-styles@^3.1.0, ansi-styles@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.0.tgz#c159b8d5be0f9e5a6f346dab94f16ce022161b88"
   dependencies:
@@ -1466,8 +1397,8 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
     rimraf "2"
 
 function-bind@^1.0.2, function-bind@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -2295,7 +2226,7 @@ mongodb-core@2.1.15:
     bson "~1.0.4"
     require_optional "~1.0.0"
 
-mongodb@^2.2.30, mongodb@^2.2.31:
+mongodb@^2.2.31:
   version "2.2.31"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.31.tgz#1940445c661e19217bb3bf8245d9854aaef548db"
   dependencies:
@@ -2371,9 +2302,10 @@ normalize-path@^2.0.0, normalize-path@^2.0.1:
     remove-trailing-separator "^1.0.1"
 
 npm-run-all@^4.0.2:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.1.0.tgz#9659951c0fa8e8452cc76dbcc4569eb8121bef28"
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.1.1.tgz#3095cf3f3cacf57fcb662b210ab10c609af6ddbb"
   dependencies:
+    ansi-styles "^3.2.0"
     chalk "^2.1.0"
     cross-spawn "^5.1.0"
     memory-streams "^0.1.2"
@@ -2684,16 +2616,37 @@ ptz-assert@^1.6.8:
     assert "^1.4.1"
     ptz-log "^1.0.0"
 
-ptz-core-domain@^1.3.3:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/ptz-core-domain/-/ptz-core-domain-1.5.2.tgz#3bd7a4dbefb90cd31e93068c1931dd2dbb729988"
+ptz-core-app@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ptz-core-app/-/ptz-core-app-2.1.0.tgz#96f989aff246954683af26a0848de9f7a578a560"
   dependencies:
-    ptz-core-domain "^1.3.3"
+    "@types/node" "^8.0.25"
+    ptz-core-domain "^2.1.0"
     ptz-log "^1.1.0"
-    ptz-validations "^1.0.0"
-    shortid "^2.2.6"
 
-ptz-fp@^1.0.1, ptz-fp@^1.1.0:
+ptz-core-domain@^2.1.0, ptz-core-domain@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ptz-core-domain/-/ptz-core-domain-2.1.1.tgz#e7ac6026e84d3f30b63add4f054a8b6b7df9b22a"
+  dependencies:
+    "@types/mongodb" "^2.2.10"
+    "@types/node" "^8.0.25"
+    "@types/shortid" "0.0.29"
+    ptz-fp "^1.2.0"
+    ptz-validations "^3.0.1"
+    ramda "^0.24.1"
+    shortid "^2.2.8"
+
+ptz-core-repository@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/ptz-core-repository/-/ptz-core-repository-2.1.2.tgz#aec97057db7356826e2eb4d71fe425732f2f383b"
+  dependencies:
+    "@types/mongodb" "^2.2.10"
+    "@types/node" "^8.0.25"
+    mongodb "^2.2.31"
+    ptz-core-domain "^2.1.1"
+    ptz-log "^1.1.0"
+
+ptz-fp@^1.0.1, ptz-fp@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ptz-fp/-/ptz-fp-1.2.0.tgz#1bbdf9455b741eb6abf23ca6e5d6784baddaa9a7"
   dependencies:
@@ -2716,14 +2669,39 @@ ptz-log@^1.0.0, ptz-log@^1.1.0:
   dependencies:
     moment "^2.18.1"
 
-ptz-menu-domain@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ptz-menu-domain/-/ptz-menu-domain-1.0.0.tgz#2ab320ae2b64f5a1e039006cbff5060ceaebaa58"
+ptz-user-app@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ptz-user-app/-/ptz-user-app-2.1.0.tgz#17acd1363aca8549e850b6b4f70e4331c6bb881c"
   dependencies:
-    ptz-core-domain "^1.3.3"
-    ptz-log "^1.0.0"
+    "@types/node" "^8.0.25"
+    bcryptjs "^2.4.3"
+    dotenv "^4.0.0"
+    jwt-simple "^0.5.1"
+    ptz-core-app "^2.1.0"
+    ptz-core-domain "^2.1.0"
+    ptz-log "^1.1.0"
+    ptz-user-domain "^2.1.1"
+    ptz-validations "^3.0.1"
 
-ptz-validations@3.0.1, ptz-validations@^3.0.1:
+ptz-user-domain@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ptz-user-domain/-/ptz-user-domain-2.1.1.tgz#434007637c043b13d990e555aa590cd39399ad4a"
+  dependencies:
+    "@types/node" "^8.0.25"
+    ptz-core-domain "^2.1.0"
+    ptz-log "^1.1.0"
+    ptz-validations "^3.0.1"
+
+ptz-user-repository@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ptz-user-repository/-/ptz-user-repository-2.1.1.tgz#ebc3b191993e99d9d2f37d2eb7f2712076b32f94"
+  dependencies:
+    mongodb "^2.2.31"
+    ptz-core-repository "^2.1.2"
+    ptz-log "^1.1.0"
+    ptz-user-domain "^2.1.1"
+
+ptz-validations@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/ptz-validations/-/ptz-validations-3.0.1.tgz#2dde5ee3669b41baf3704fc952d1d7fb5b427218"
   dependencies:
@@ -2731,12 +2709,6 @@ ptz-validations@3.0.1, ptz-validations@^3.0.1:
     ptz-log "^1.1.0"
     ramda "^0.24.1"
     shortid "^2.2.8"
-
-ptz-validations@^1.0.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/ptz-validations/-/ptz-validations-1.2.2.tgz#77e2a38c246572ecaf8184ceec9ad0d58b21b398"
-  dependencies:
-    ptz-log "^1.0.0"
 
 punycode@^1.4.1:
   version "1.4.1"
@@ -3077,7 +3049,7 @@ shelljs@^0.7.0:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-shortid@^2.2.6, shortid@^2.2.8:
+shortid@^2.2.8:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.8.tgz#033b117d6a2e975804f6f0969dbe7d3d0b355131"
 

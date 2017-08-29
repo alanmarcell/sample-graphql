@@ -1,4 +1,3 @@
-import { ICreatedBy } from '@alanmarcell/ptz-user-domain';
 import {
     GraphQLFloat,
     GraphQLList,
@@ -13,6 +12,7 @@ import {
     mutationWithClientMutationId
 } from 'graphql-relay';
 import { ILog } from 'ptz-log';
+import { ICreatedBy } from 'ptz-user-domain';
 import { IProductApp } from './domain';
 
 interface IProductSchemaArgs {

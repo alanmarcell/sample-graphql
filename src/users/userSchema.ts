@@ -1,4 +1,4 @@
-import { IAuthToken, IAuthUserArgs, ICreatedBy, IUserApp } from '@alanmarcell/ptz-user-domain';
+import { IAuthToken, IAuthUserArgs, ICreatedBy, IUserApp } from 'ptz-user-domain';
 
 import {
     GraphQLBoolean,

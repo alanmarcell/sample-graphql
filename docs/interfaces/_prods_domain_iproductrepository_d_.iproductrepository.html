@@ -115,18 +115,18 @@
 					<aside class="tsd-sources">
 						<p>Inherited from IBaseRepository.collectionName</p>
 						<ul>
-							<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:4</li>
+							<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:9</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="db" class="tsd-anchor"></a>
 					<h3>db</h3>
-					<div class="tsd-signature tsd-kind-icon">db<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<div class="tsd-signature tsd-kind-icon">db<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Db</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from IBaseRepository.db</p>
 						<ul>
-							<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:5</li>
+							<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:10</li>
 						</ul>
 					</aside>
 				</section>
@@ -144,7 +144,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from IBaseRepository.find</p>
 								<ul>
-									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:15</li>
+									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:20</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -176,7 +176,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from IBaseRepository.getById</p>
 								<ul>
-									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:11</li>
+									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:16</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -200,7 +200,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from IBaseRepository.getByIds</p>
 								<ul>
-									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:13</li>
+									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:18</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -223,7 +223,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in prods/domain/IProductRepository.d.ts:5</li>
+									<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/7b9fe3e/src/prods/domain/IProductRepository.d.ts#L5">prods/domain/IProductRepository.d.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -240,17 +240,26 @@
 					<a name="getdbcollection" class="tsd-anchor"></a>
 					<h3>get<wbr>DbCollection</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>DbCollection<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>DbCollection<span class="tsd-signature-symbol">(</span>db<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Db</span>, collectionName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Collection</span><span class="tsd-signature-symbol">&lt;</span><a href="_prods_domain_iproduct_d_.iproduct.html" class="tsd-signature-type">IProduct</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">IEntityMinBase</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from IBaseRepository.getDbCollection</p>
 								<ul>
-									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:7</li>
+									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:12</li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>db: <span class="tsd-signature-type">Db</span></h5>
+								</li>
+								<li>
+									<h5>collectionName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Collection</span><span class="tsd-signature-symbol">&lt;</span><a href="_prods_domain_iproduct_d_.iproduct.html" class="tsd-signature-type">IProduct</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">IEntityMinBase</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -264,7 +273,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in prods/domain/IProductRepository.d.ts:6</li>
+									<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/7b9fe3e/src/prods/domain/IProductRepository.d.ts#L6">prods/domain/IProductRepository.d.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -288,7 +297,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from IBaseRepository.save</p>
 								<ul>
-									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:9</li>
+									<li>Defined in C:/Users/alan.m.oliveira/dev/sample-graphql/node_modules/ptz-core-domain/src/IBaseRepository.d.ts:14</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

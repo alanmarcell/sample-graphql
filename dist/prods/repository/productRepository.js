@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getOtherProductsWithSameProductName = exports.getByProductName = exports.createProductRepository = undefined;
 
-var _ptzCoreRepository = require('@alanmarcell/ptz-core-repository');
+var _ptzCoreRepository = require('ptz-core-repository');
 
 var _ramda = require('ramda');
 

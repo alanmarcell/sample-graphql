@@ -1,20 +1,20 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import {
-    ICreatedBy
-} from '@alanmarcell/ptz-user-domain';
 import cors from 'cors';
 import express from 'express';
 import GraphQlHttp from 'express-graphql';
 import * as fs from 'fs';
 import { graphql } from 'graphql';
 import { introspectionQuery } from 'graphql/utilities';
+import {
+    ICreatedBy
+} from 'ptz-user-domain';
 import Schema from './core/schema';
 import MONGO_URL from './mongoDbUrl';
 
-import { createApp as createUserApp } from '@alanmarcell/ptz-user-app';
-import { createUserRepository } from '@alanmarcell/ptz-user-repository';
+import { createApp as createUserApp } from 'ptz-user-app';
+import { createUserRepository } from 'ptz-user-repository';
 
 import { createApp as createProductApp } from './prods/app';
 import { createProductRepository } from './prods/repository';

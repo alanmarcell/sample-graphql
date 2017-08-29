@@ -1,4 +1,4 @@
-import { ICreatedBy } from '@alanmarcell/ptz-user-domain';
+import { ICreatedBy } from 'ptz-user-domain';
 import * as V from 'ptz-validations';
 import {
     createProduct,

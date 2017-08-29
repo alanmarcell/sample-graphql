@@ -1,10 +1,10 @@
-import { IUserApp } from '@alanmarcell/ptz-user-domain';
 import {
     GraphQLObjectType,
     GraphQLSchema
 } from 'graphql';
 import { globalIdField } from 'graphql-relay';
 import { ILog } from 'ptz-log';
+import { IUserApp } from 'ptz-user-domain';
 import { IProductApp } from '../prods/domain';
 import ProdsSchema from '../prods/prodsSchema';
 import UserSchema from '../users/userSchema';

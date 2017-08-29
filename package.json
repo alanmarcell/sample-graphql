@@ -50,9 +50,9 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "@alanmarcell/ptz-user-app": "^2.0.4",
-    "@alanmarcell/ptz-user-domain": "^2.0.3",
-    "@alanmarcell/ptz-user-repository": "^0.0.3",
+    "ptz-user-app": "^2.1.0",
+    "ptz-user-domain": "^2.1.1",
+    "ptz-user-repository": "^2.1.1",
     "@types/mongodb": "^2.2.10",
     "axios": "^0.16.2",
     "bcryptjs": "^2.4.3",

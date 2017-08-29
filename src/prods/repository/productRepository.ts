@@ -1,5 +1,5 @@
-import { find, getById, getByIds, getDb, getDbCollection, save } from '@alanmarcell/ptz-core-repository';
 import { Collection } from 'mongodb';
+import { find, getById, getByIds, getDb, getDbCollection, save } from 'ptz-core-repository';
 import R from 'ramda';
 import { IProduct, IProductArgs, IProductRepository } from '../domain';
 type ICreateRepository = (url: string, collectionName: string) => Promise<IProductRepository>;

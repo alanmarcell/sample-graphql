@@ -1,5 +1,5 @@
-import { IUserForLog } from '@alanmarcell/ptz-user-domain';
 import { IEntityBase, IEntityBaseArgs } from 'ptz-core-domain';
+import { IUserForLog } from 'ptz-user-domain';
 
 export type IEntityBase = IEntityBase<IUserForLog>;
 
