@@ -6,7 +6,7 @@
   "typings": "src/index.ts",
   "scripts": {
     "lint": "tslint ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
-    "js": "rimraf ./dist-esnext && tsc && rimraf ./dist && babel ./dist-esnext -d ./dist --presets es2015 --source-maps",
+    "js": "rimraf ./dist-esnext && tsc && rimraf ./dist && babel ./dist-esnext -d ./dist --source-maps",
     "pretest": "npm-run-all --parallel js lint",
     "mocha": "mocha ./dist/**/*.js --require babel-polyfill",
     "test": "nyc npm run mocha && nyc report --reporter=html --reporter=text-lcov > coverage.lcov && codecov --token=f5186102-ac15-4a2f-9212-bf219e981ada",
@@ -16,7 +16,7 @@
     "docs:build": "typedoc --out ./docs ./ --includeDeclarations --excludeExternals --exclude '**/*.test.ts'",
     "docs": "npm run docs:build && opn ./docs/index.html",
     "start": "npm-run-all --parallel gensalt server",
-    "server": "npm run js && babel-node --presets es2015 ./dist/index.js",
+    "server": "npm run js && babel-node ./dist/index.js",
     "gensalt": "node gensalt.js"
   },
   "repository": {
@@ -33,8 +33,7 @@
     "@types/mocha": "^2.2.40",
     "@types/node": "^8.0.25",
     "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "codecov": "^2.3.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
@@ -60,12 +59,12 @@
     "graphql": "^0.11.1",
     "graphql-relay": "^0.5.2",
     "mongodb": "^2.2.31",
-    "ptz-core-domain": "^2.1.1",
-    "ptz-core-repository": "^2.1.2",
+    "ptz-core-domain": "^2.1.2",
+    "ptz-core-repository": "^2.1.3",
     "ptz-log": "^1.1.0",
     "ptz-log-file": "^1.0.5",
-    "ptz-user-app": "^2.1.0",
+    "ptz-user-app": "^2.1.1",
     "ptz-user-domain": "^2.1.1",
-    "ptz-user-repository": "^2.1.1"
+    "ptz-user-repository": "^2.1.3"
   }
 }

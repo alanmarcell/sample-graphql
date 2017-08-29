@@ -5,38 +5,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.log = undefined;
 
-var createGraphqlSchema = function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(schema) {
-        var json, file;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-                switch (_context.prev = _context.next) {
-                    case 0:
-                        _context.next = 2;
-                        return (0, _graphql.graphql)(schema, _utilities.introspectionQuery);
-
-                    case 2:
-                        json = _context.sent;
-                        file = '/public/schema.json';
-
-                        fs.writeFile('.' + file, JSON.stringify(json, null, 2), function (err) {
-                            if (err) throw err;
-                            log('Json schema created!', getRunningUrl(file));
-                        });
-                        app.use('/public', _express2.default.static('public'));
-
-                    case 6:
-                    case 'end':
-                        return _context.stop();
-                }
-            }
-        }, _callee, this);
-    }));
+let createGraphqlSchema = (() => {
+    var _ref = _asyncToGenerator(function* (schema) {
+        const json = yield (0, _graphql.graphql)(schema, _utilities.introspectionQuery);
+        const file = '/public/schema.json';
+        fs.writeFile(`.${file}`, JSON.stringify(json, null, 2), function (err) {
+            if (err) throw err;
+            log('Json schema created!', getRunningUrl(file));
+        });
+        app.use('/public', _express2.default.static('public'));
+    });
 
     return function createGraphqlSchema(_x) {
         return _ref.apply(this, arguments);
     };
-}();
+})();
 
 var _dotenv = require('dotenv');
 
@@ -89,84 +72,44 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 _dotenv2.default.config();
-var log = exports.log = (0, _ptzLogFile2.default)({ dir: './logs' });
-var app = (0, _express2.default)();
+const log = exports.log = (0, _ptzLogFile2.default)({ dir: './logs' });
+const app = (0, _express2.default)();
 app.use((0, _cors2.default)());
 log('starting server');
-var PORT = 3012;
+const PORT = 3012;
 function getRunningUrl(path) {
-    return 'http://localhost:' + PORT + path;
+    return `http://localhost:${PORT}${path}`;
 }
 
-_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var userApp, productApp, authedUser, schema, graphqlFolder;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-        while (1) {
-            switch (_context2.prev = _context2.next) {
-                case 0:
-                    _context2.prev = 0;
-                    _context2.t0 = _ptzUserApp.createApp;
-                    _context2.next = 4;
-                    return (0, _ptzUserRepository.createUserRepository)(_mongoDbUrl2.default, 'user');
-
-                case 4:
-                    _context2.t1 = _context2.sent;
-                    _context2.t2 = log;
-                    _context2.t3 = {
-                        userRepository: _context2.t1,
-                        log: _context2.t2
-                    };
-                    userApp = (0, _context2.t0)(_context2.t3);
-                    _context2.t4 = _app.createApp;
-                    _context2.next = 11;
-                    return (0, _repository.createProductRepository)(_mongoDbUrl2.default, 'products');
-
-                case 11:
-                    _context2.t5 = _context2.sent;
-                    _context2.t6 = log;
-                    _context2.t7 = {
-                        productRepository: _context2.t5,
-                        log: _context2.t6
-                    };
-                    productApp = (0, _context2.t4)(_context2.t7);
-                    authedUser = {
-                        dtCreated: new Date(),
-                        ip: '0.0.0.0'
-                    };
-                    _context2.next = 18;
-                    return userApp.seed(authedUser);
-
-                case 18:
-                    schema = (0, _schema2.default)(userApp, productApp, authedUser, log);
-                    graphqlFolder = '/graphql';
-
-                    app.use(graphqlFolder, (0, _expressGraphql2.default)({
-                        schema: schema,
-                        graphiql: true
-                    }));
-                    _context2.next = 23;
-                    return createGraphqlSchema(schema);
-
-                case 23:
-                    app.listen(PORT, function () {
-                        var url = getRunningUrl(graphqlFolder);
-                        log('Running on ' + url);
-                    });
-                    _context2.next = 29;
-                    break;
-
-                case 26:
-                    _context2.prev = 26;
-                    _context2.t8 = _context2['catch'](0);
-
-                    log(_context2.t8);
-
-                case 29:
-                case 'end':
-                    return _context2.stop();
-            }
-        }
-    }, _callee2, undefined, [[0, 26]]);
-}))();
+_asyncToGenerator(function* () {
+    try {
+        const userApp = (0, _ptzUserApp.createApp)({
+            userRepository: yield (0, _ptzUserRepository.createUserRepository)(_mongoDbUrl2.default, 'user'),
+            log
+        });
+        const productApp = (0, _app.createApp)({
+            productRepository: yield (0, _repository.createProductRepository)(_mongoDbUrl2.default, 'products'),
+            log
+        });
+        const authedUser = {
+            dtCreated: new Date(),
+            ip: '0.0.0.0'
+        };
+        yield userApp.seed(authedUser);
+        const schema = (0, _schema2.default)(userApp, productApp, authedUser, log);
+        const graphqlFolder = '/graphql';
+        app.use(graphqlFolder, (0, _expressGraphql2.default)({
+            schema,
+            graphiql: true
+        }));
+        yield createGraphqlSchema(schema);
+        app.listen(PORT, function () {
+            const url = getRunningUrl(graphqlFolder);
+            log(`Running on ${url}`);
+        });
+    } catch (e) {
+        log(e);
+    }
+})();
 //# sourceMappingURL=index.js.map
 //# sourceMappingURL=index.js.map

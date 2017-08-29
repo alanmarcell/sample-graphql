@@ -4,8 +4,8 @@ var _ptzAssert = require('ptz-assert');
 
 var _index = require('./index');
 
-describe('products', function () {
-    it('allProducts has more than 2 test products', function () {
+describe('products', () => {
+    it('allProducts has more than 2 test products', () => {
         (0, _ptzAssert.ok)(_index.products.allProducts.length > 2);
     });
 });

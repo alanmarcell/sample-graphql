@@ -19,48 +19,38 @@ var _userSchema2 = _interopRequireDefault(_userSchema);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Schema(userApp, productApp, authedUser, log) {
-    var userSchema = (0, _userSchema2.default)({ userApp: userApp, authedUser: authedUser, log: log });
-    var prodsSchema = (0, _prodsSchema2.default)({ productApp: productApp, authedUser: authedUser, log: log });
-    var viewer = {};
-    var viewerType = new _graphql.GraphQLObjectType({
+    const userSchema = (0, _userSchema2.default)({ userApp, authedUser, log });
+    const prodsSchema = (0, _prodsSchema2.default)({ productApp, authedUser, log });
+    const viewer = {};
+    const viewerType = new _graphql.GraphQLObjectType({
         name: 'Viewer',
-        fields: function fields() {
-            return {
-                id: (0, _graphqlRelay.globalIdField)('Viewer'),
-                userConnection: userSchema.getUserConnection(),
-                prods: prodsSchema.getProds()
-            };
-        }
+        fields: () => ({
+            id: (0, _graphqlRelay.globalIdField)('Viewer'),
+            userConnection: userSchema.getUserConnection(),
+            prods: prodsSchema.getProds()
+        })
     });
-    var outputViewer = {
+    const outputViewer = {
         type: viewerType,
-        resolve: function resolve() {
-            return viewer;
-        }
+        resolve: () => viewer
     };
-    var schema = new _graphql.GraphQLSchema({
+    const schema = new _graphql.GraphQLSchema({
         query: new _graphql.GraphQLObjectType({
             name: 'Query',
-            fields: function fields() {
-                return {
-                    viewer: {
-                        type: viewerType,
-                        resolve: function resolve() {
-                            return viewer;
-                        }
-                    }
-                };
-            }
+            fields: () => ({
+                viewer: {
+                    type: viewerType,
+                    resolve: () => viewer
+                }
+            })
         }),
         mutation: new _graphql.GraphQLObjectType({
             name: 'Mutation',
-            fields: function fields() {
-                return {
-                    saveUser: userSchema.getSaveUserMutation(outputViewer),
-                    getAuthToken: userSchema.getAuthTokenMutation(outputViewer),
-                    saveProd: prodsSchema.getSaveProdMutation()
-                };
-            }
+            fields: () => ({
+                saveUser: userSchema.getSaveUserMutation(outputViewer),
+                getAuthToken: userSchema.getAuthTokenMutation(outputViewer),
+                saveProd: prodsSchema.getSaveProdMutation()
+            })
         })
     });
     return schema;

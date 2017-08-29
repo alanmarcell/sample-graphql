@@ -8,15 +8,11 @@ Object.defineProperty(exports, "__esModule", {
  * @param oldProduct
  * @param newProduct
  */
-var updateProduct = exports.updateProduct = function updateProduct(oldProduct, _ref) {
-    var name = _ref.name,
-        category = _ref.category,
-        price = _ref.price;
-
+const updateProduct = exports.updateProduct = (oldProduct, { name, category, price }) => {
     return Object.assign({}, oldProduct, {
-        name: name,
-        category: category,
-        price: price,
+        name,
+        category,
+        price,
         dtChanged: new Date()
     });
 };

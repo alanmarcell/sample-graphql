@@ -2,8 +2,8 @@
 
 var _assert = require('assert');
 
-describe('Index', function () {
-    it('should have a test', function () {
+describe('Index', () => {
+    it('should have a test', () => {
         (0, _assert.equal)(true, true, 'Lets make some tests!');
     });
 });

@@ -93,7 +93,7 @@
 					<div class="tsd-signature tsd-kind-icon">ICreate<wbr>Repository<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/59b5ee2/src/prods/repository/productRepository.ts#L5">prods/repository/productRepository.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/14d2e12/src/prods/repository/productRepository.ts#L5">prods/repository/productRepository.ts:5</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -130,7 +130,7 @@
 					<div class="tsd-signature tsd-kind-icon">create<wbr>Product<wbr>Repository<span class="tsd-signature-symbol">:</span> <a href="_prods_repository_productrepository_.html#icreaterepository" class="tsd-signature-type">ICreateRepository</a><span class="tsd-signature-symbol"> =&nbsp;R.curry(async (url: string, collectionName: string) &#x3D;&gt; {const db &#x3D; await getDb(url);const collection &#x3D; getDbCollection&lt;IProduct&gt;(db, collectionName);return {db,collectionName,save: save(collection),getByIds: getByIds(collection),find: find(collection),getById: getById(collection),getDbCollection: () &#x3D;&gt; collection,getOtherProductsWithSameProductName: getOtherProductsWithSameProductName(collection),getByProductName: getByProductName(collection)};})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/59b5ee2/src/prods/repository/productRepository.ts#L7">prods/repository/productRepository.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/14d2e12/src/prods/repository/productRepository.ts#L7">prods/repository/productRepository.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -140,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>ByProduct<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurriedFunction2</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Collection</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_prods_domain_iproduct_d_.iproduct.html" class="tsd-signature-type">IProduct</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;R.curry((collection: Collection, productName: string): Promise&lt;IProduct&gt; &#x3D;&gt; {const query &#x3D; {$or: [{ name: productName }]};return collection.findOne(query);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/59b5ee2/src/prods/repository/productRepository.ts#L41">prods/repository/productRepository.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/14d2e12/src/prods/repository/productRepository.ts#L41">prods/repository/productRepository.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -150,7 +150,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Other<wbr>Products<wbr>With<wbr>Same<wbr>Product<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurriedFunction2</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Collection</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_prods_domain_iproduct_d_.iproductargs.html" class="tsd-signature-type">IProductArgs</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_prods_domain_iproduct_d_.iproduct.html" class="tsd-signature-type">IProduct</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;R.curry((collection: Collection, product: IProductArgs): Promise&lt;IProduct[]&gt; &#x3D;&gt; {const query &#x3D; {_id: { $ne: product.id },$or: [{ name: product.name }]};const select &#x3D; {name: 1};return collection.find(query, select).toArray();})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/59b5ee2/src/prods/repository/productRepository.ts#L23">prods/repository/productRepository.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/alanmarcell/sample-graphql/blob/14d2e12/src/prods/repository/productRepository.ts#L23">prods/repository/productRepository.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>

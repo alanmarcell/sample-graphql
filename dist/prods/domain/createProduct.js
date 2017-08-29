@@ -11,7 +11,7 @@ var V = _interopRequireWildcard(_ptzValidations);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var createProductValidation = {
+const createProductValidation = {
     id: [V.generateId],
     name: [V.required, V.isString, V.min(4), V.max(100)],
     category: [V.required, V.isString, V.min(4), V.max(100)],
@@ -20,6 +20,6 @@ var createProductValidation = {
 /**
  * Create product
  */
-var createProduct = exports.createProduct = V.validate(createProductValidation);
+const createProduct = exports.createProduct = V.validate(createProductValidation);
 //# sourceMappingURL=createProduct.js.map
 //# sourceMappingURL=createProduct.js.map
