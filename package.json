@@ -50,9 +50,6 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "ptz-user-app": "^2.1.0",
-    "ptz-user-domain": "^2.1.1",
-    "ptz-user-repository": "^2.1.1",
     "@types/mongodb": "^2.2.10",
     "axios": "^0.16.2",
     "bcryptjs": "^2.4.3",
@@ -63,7 +60,12 @@
     "graphql": "^0.11.1",
     "graphql-relay": "^0.5.2",
     "mongodb": "^2.2.31",
+    "ptz-core-domain": "^2.1.1",
+    "ptz-core-repository": "^2.1.2",
     "ptz-log": "^1.1.0",
-    "ptz-log-file": "^1.0.5"
+    "ptz-log-file": "^1.0.5",
+    "ptz-user-app": "^2.1.0",
+    "ptz-user-domain": "^2.1.1",
+    "ptz-user-repository": "^2.1.1"
   }
 }
