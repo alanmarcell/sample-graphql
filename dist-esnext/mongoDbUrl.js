@@ -1,2 +1,3 @@
-export default 'mongodb://admin:admin@ds161913.mlab.com:61913/poc-microservices';
+// export default 'mongodb://<USERNAME>:<PASSWORD>@ds161913.mlab.com:<PORT>/<DB>';
+export default 'mongodb://localhost:27017/demo-server';
 //# sourceMappingURL=mongoDbUrl.js.map
