@@ -17,7 +17,7 @@ export const log = logFile({ dir: './logs' });
 const app = express();
 app.use(cors());
 log('starting server');
-const PORT = 3012;
+const PORT = 8080;
 function getRunningUrl(path) {
     return `http://localhost:${PORT}${path}`;
 }

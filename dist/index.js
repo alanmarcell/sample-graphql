@@ -76,7 +76,7 @@ const log = exports.log = (0, _ptzLogFile2.default)({ dir: './logs' });
 const app = (0, _express2.default)();
 app.use((0, _cors2.default)());
 log('starting server');
-const PORT = 3012;
+const PORT = 8080;
 function getRunningUrl(path) {
     return `http://localhost:${PORT}${path}`;
 }
